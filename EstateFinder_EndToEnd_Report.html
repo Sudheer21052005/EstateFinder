@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EstateFinder — End-to-End Project Report</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm 20mm 16mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: #1f2933; line-height: 1.55; font-size: 11pt; margin: 0;
+  }
+  h1, h2, h3, h4 { color: #1B5E20; line-height: 1.25; }
+  h1 { font-size: 26pt; margin: 0 0 4pt; }
+  h2 {
+    font-size: 17pt; margin: 26pt 0 8pt; padding-bottom: 4pt;
+    border-bottom: 2.5px solid #2E7D32; page-break-after: avoid;
+  }
+  h3 { font-size: 13pt; margin: 16pt 0 5pt; color: #2E7D32; page-break-after: avoid; }
+  h4 { font-size: 11.5pt; margin: 12pt 0 3pt; color: #33691E; page-break-after: avoid; }
+  p { margin: 6pt 0; }
+  ul, ol { margin: 6pt 0 6pt 0; padding-left: 22pt; }
+  li { margin: 3pt 0; }
+  code {
+    font-family: "Consolas", "Courier New", monospace; font-size: 9.7pt;
+    background: #eef4ee; color: #1B5E20; padding: 1px 4px; border-radius: 3px;
+  }
+  pre {
+    font-family: "Consolas", "Courier New", monospace; font-size: 9pt;
+    background: #f4f7f4; border: 1px solid #d5e2d5; border-left: 4px solid #2E7D32;
+    border-radius: 5px; padding: 10px 12px; overflow-x: auto; line-height: 1.4;
+    white-space: pre-wrap; word-wrap: break-word; page-break-inside: avoid;
+  }
+  pre code { background: none; color: #22402a; padding: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 8pt 0; font-size: 9.8pt; page-break-inside: avoid; }
+  th, td { border: 1px solid #cdd9cd; padding: 5px 8px; text-align: left; vertical-align: top; }
+  th { background: #2E7D32; color: #fff; font-weight: 600; }
+  tr:nth-child(even) td { background: #f4f7f4; }
+  .cover {
+    height: 250mm; display: flex; flex-direction: column; justify-content: center;
+    align-items: center; text-align: center; page-break-after: always;
+  }
+  .cover .logo {
+    width: 96px; height: 96px; border-radius: 50%; background: #2E7D32;
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-size: 46px; margin-bottom: 20px;
+  }
+  .cover .sub { font-size: 14pt; color: #52606d; margin-top: 2pt; }
+  .cover .meta { margin-top: 34pt; font-size: 10.5pt; color: #3e4c59; }
+  .cover .meta table { width: auto; margin: 0 auto; }
+  .cover .meta td { border: none; padding: 3px 10px; background: none !important; }
+  .cover .meta td:first-child { color: #7b8794; text-align: right; }
+  .cover .meta td:last-child { font-weight: 600; color: #1f2933; }
+  .lead {
+    background: #eef4ee; border: 1px solid #cfe0cf; border-radius: 6px;
+    padding: 10px 14px; margin: 10pt 0;
+  }
+  .note {
+    background: #fff8e1; border: 1px solid #ffe082; border-left: 4px solid #FFB300;
+    border-radius: 5px; padding: 8px 12px; margin: 8pt 0; font-size: 10pt;
+  }
+  .tag {
+    display: inline-block; background: #2E7D32; color: #fff; font-size: 8.5pt;
+    padding: 1px 8px; border-radius: 10px; margin-right: 6px; vertical-align: middle;
+  }
+  .toc ol { list-style: none; padding-left: 0; counter-reset: toc; }
+  .toc > ol > li { counter-increment: toc; margin: 4pt 0; font-weight: 600; }
+  .toc > ol > li::before { content: counter(toc) ".  "; color: #2E7D32; }
+  .section { page-break-inside: auto; }
+  .avoid-break { page-break-inside: avoid; }
+  .small { font-size: 9.5pt; color: #52606d; }
+  hr { border: none; border-top: 1px solid #d5e2d5; margin: 14pt 0; }
+  .footer-note { font-size: 9pt; color: #7b8794; text-align: center; margin-top: 30pt; }
+</style>
+</head>
+<body>
+
+<!-- ===================== COVER ===================== -->
+<div class="cover">
+  <div class="logo">&#127968;</div>
+  <h1>EstateFinder</h1>
+  <div class="sub">A Real-Estate Property Browsing App for Android</div>
+  <div class="sub" style="font-size:12pt;color:#7b8794;">End-to-End Project Report &amp; Viva Walkthrough</div>
+  <div class="meta">
+    <table>
+      <tr><td>Platform</td><td>Android (Native)</td></tr>
+      <tr><td>Language</td><td>Java</td></tr>
+      <tr><td>Architecture</td><td>MVVM + Room + Retrofit</td></tr>
+      <tr><td>Package</td><td>com.example.estatefinder</td></tr>
+      <tr><td>Min / Target SDK</td><td>API 26 (Android 8.0) / API 34 (Android 14)</td></tr>
+      <tr><td>Report type</td><td>Creation &rarr; Structure &rarr; How it works</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ===================== TOC ===================== -->
+<div class="toc section">
+  <h2 style="margin-top:0;">Contents</h2>
+  <ol>
+    <li>What EstateFinder Is</li>
+    <li>Creating the Project in Android Studio (Step by Step)</li>
+    <li>Gradle Setup &amp; Dependencies (and Why Each One)</li>
+    <li>The Full Project Structure</li>
+    <li>The Architecture: MVVM + Offline-First</li>
+    <li>The Data Layer (Room, Entities, DAOs, Migrations, Seeding)</li>
+    <li>The Network Layer (Retrofit + Mock API)</li>
+    <li>The Repository &amp; ViewModel (The Reactive Brain)</li>
+    <li>Every Screen: Activities &amp; Their Layouts</li>
+    <li>The Four Features, End to End</li>
+    <li>Visual Polish (Theme, Day/Night, Animations)</li>
+    <li>How It All Works Together (Runtime Walkthrough)</li>
+    <li>How to Build &amp; Run It</li>
+    <li>Viva Talking Points &amp; Conclusion</li>
+  </ol>
+</div>
+
+<!-- ===================== 1 ===================== -->
+<div class="section">
+<h2>1. What EstateFinder Is</h2>
+<p><strong>EstateFinder</strong> is a native Android application that lets a user browse, search, filter, sort, and shortlist real-estate property listings (apartments, houses, villas, and offices), view rich detail pages, contact the seller, and share a listing with others.</p>
+
+<p>It is built as an <strong>offline-first</strong> app: every screen reads from a local database, so the app works instantly and never shows a blank screen even with no internet. A mock REST API is available to demonstrate that the same data can be refreshed from a server.</p>
+
+<div class="lead">
+<strong>The app is organised around four headline features:</strong>
+<ul style="margin-bottom:0;">
+  <li><span class="tag">F1</span> <strong>Featured Properties</strong> — a curated set highlighted on the home screen with a star badge.</li>
+  <li><span class="tag">F2</span> <strong>Sort Listings</strong> — order results by newest, price, or area.</li>
+  <li><span class="tag">F3</span> <strong>Share Property</strong> — send a formatted summary to any app via the system share sheet.</li>
+  <li><span class="tag">F4</span> <strong>Seller Info &amp; Contact</strong> — call, email, or message the listing's seller directly.</li>
+</ul>
+</div>
+
+<p class="small">Guiding engineering principle throughout: <strong>stability over feature count</strong>. Every screen is backed by the local database, all database work happens off the main thread, and the UI updates reactively through observable data streams.</p>
+</div>
+
+<!-- ===================== 2 ===================== -->
+<div class="section">
+<h2>2. Creating the Project in Android Studio (Step by Step)</h2>
+<p>This is exactly how the project skeleton is created before any of our own code is written.</p>
+
+<h3>Step 1 — New Project</h3>
+<p>Open Android Studio &rarr; <strong>File &rarr; New &rarr; New Project</strong>. On the template chooser, pick <strong>&ldquo;Empty Views Activity&rdquo;</strong>. (We choose <em>Views</em>, not <em>Compose</em>, because this app is built with classic XML layouts + Java.)</p>
+
+<h3>Step 2 — Configure the project</h3>
+<table>
+  <tr><th>Field</th><th>Value used</th></tr>
+  <tr><td>Name</td><td>EstateFinder</td></tr>
+  <tr><td>Package name</td><td><code>com.example.estatefinder</code></td></tr>
+  <tr><td>Language</td><td>Java</td></tr>
+  <tr><td>Minimum SDK</td><td>API 26 (Android 8.0 &ldquo;Oreo&rdquo;)</td></tr>
+  <tr><td>Build configuration language</td><td>Groovy DSL (<code>build.gradle</code>)</td></tr>
+</table>
+<p>Clicking <strong>Finish</strong> makes Android Studio generate a working &ldquo;Hello World&rdquo; app.</p>
+
+<h3>Step 3 — What the wizard generates for you</h3>
+<p>Out of the box you get exactly one screen and its supporting files:</p>
+<ul>
+  <li><code>MainActivity.java</code> — the single starting Activity (a screen).</li>
+  <li><code>res/layout/activity_main.xml</code> — the layout (the visual design) for that screen.</li>
+  <li><code>AndroidManifest.xml</code> — the app's &ldquo;table of contents&rdquo; that registers every screen and permission.</li>
+  <li><code>build.gradle</code> (project + app) — the build scripts and dependency lists.</li>
+  <li><code>res/values/</code> — <code>strings.xml</code> (text), <code>colors.xml</code> (colours), <code>themes.xml</code> (styling).</li>
+</ul>
+
+<div class="note"><strong>Key concept:</strong> In Android, a screen = an <strong>Activity</strong> (the Java logic) + a <strong>layout</strong> (the XML design). Every new screen you want must be (a) written as a Java Activity class, (b) given an XML layout, and (c) registered in the manifest. EstateFinder grows from the single generated <code>MainActivity</code> into <strong>six activities</strong> exactly this way.</div>
+
+<h3>Step 4 — Building out the rest</h3>
+<p>From that one generated screen, we then:</p>
+<ol>
+  <li>Add our library dependencies in <code>app/build.gradle</code> (Section 3).</li>
+  <li>Create Java <strong>packages</strong> to organise code by responsibility (Section 4).</li>
+  <li>Add new <strong>Activities + layouts</strong> for each screen — Splash, Property List, Details, Favorites, Map (Section 9) — and register each one in the manifest.</li>
+  <li>Create the <strong>Room database</strong>, DTOs, repository and view-model that feed those screens (Sections 6–8).</li>
+</ol>
+</div>
+
+<!-- ===================== 3 ===================== -->
+<div class="section">
+<h2>3. Gradle Setup &amp; Dependencies (and Why Each One)</h2>
+<p>Gradle is the build system. Two files matter:</p>
+
+<h3>Root <code>build.gradle</code></h3>
+<p>Declares the Android Gradle Plugin version shared by all modules:</p>
+<pre><code>plugins {
+    id 'com.android.application' version '8.7.3' apply false
+}</code></pre>
+
+<h3>Module <code>app/build.gradle</code> — core config</h3>
+<pre><code>android {
+    namespace 'com.example.estatefinder'
+    compileSdk 34
+    defaultConfig {
+        applicationId "com.example.estatefinder"
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}</code></pre>
+
+<h3>Dependencies and their jobs</h3>
+<table>
+  <tr><th>Library</th><th>Version</th><th>What it does in this app</th></tr>
+  <tr><td>AppCompat</td><td>1.7.0</td><td>Backwards-compatible Activity base classes.</td></tr>
+  <tr><td>Material Components</td><td>1.12.0</td><td>Material 3 widgets: toolbars, cards, chips, toggle buttons, text fields.</td></tr>
+  <tr><td>ConstraintLayout</td><td>2.2.0</td><td>Flexible layout engine used inside screens.</td></tr>
+  <tr><td>RecyclerView</td><td>1.3.2</td><td>Efficient scrolling lists of property cards.</td></tr>
+  <tr><td>Lifecycle ViewModel</td><td>2.8.7</td><td>Holds UI state so it survives screen rotation.</td></tr>
+  <tr><td>Lifecycle LiveData</td><td>2.8.7</td><td>Observable data — the UI auto-updates when data changes.</td></tr>
+  <tr><td>Room (runtime + compiler)</td><td>2.6.1</td><td>The local SQLite database layer — our single source of truth.</td></tr>
+  <tr><td>Retrofit + Gson converter</td><td>2.11.0</td><td>Type-safe HTTP client to talk to the mock REST API.</td></tr>
+  <tr><td>OkHttp logging interceptor</td><td>4.12.0</td><td>Logs network calls during development.</td></tr>
+  <tr><td>Glide</td><td>4.16.0</td><td>Loads &amp; caches property images from URLs, with a fallback image.</td></tr>
+</table>
+<p class="small">Deliberately <strong>not</strong> included: Google Maps SDK, Firebase, authentication, payments — kept out to maximise stability and keep the scope tight.</p>
+</div>
+
+<!-- ===================== 4 ===================== -->
+<div class="section">
+<h2>4. The Full Project Structure</h2>
+<p>Code is grouped into packages by responsibility, so each part of the app has one clear home:</p>
+<pre><code>com.example.estatefinder
+│
+├── MainActivity.java                 ← Home screen logic
+│
+├── model/
+│   └── Property.java                 ← Plain domain object (one listing)
+│
+├── data/
+│   ├── SampleData.java               ← 15 hard-coded seed listings
+│   ├── local/                        ← ROOM (local database)
+│   │   ├── EstateDatabase.java       ← DB definition, migrations, seeding
+│   │   ├── PropertyEntity.java       ← "properties" table row
+│   │   ├── FavoriteEntity.java       ← "favorites" table row
+│   │   ├── PropertyDao.java          ← Queries for properties
+│   │   └── FavoriteDao.java          ← Queries for favorites
+│   ├── remote/                       ← RETROFIT (network)
+│   │   ├── ApiService.java           ← REST endpoints
+│   │   ├── RemoteDataSource.java     ← Retrofit builder + fetch
+│   │   ├── dto/PropertyResponse.java ← JSON shape from server
+│   │   └── mapper/PropertyMapper.java← DTO ⇄ domain/entity conversion
+│   └── repository/
+│       └── PropertyRepository.java   ← Single source of truth, merges DB + network
+│
+├── viewmodel/
+│   └── PropertyViewModel.java        ← Holds UI state, exposes LiveData
+│
+├── util/
+│   └── FormatUtils.java              ← Indian-currency price formatting
+│
+└── ui/
+    ├── splash/SplashActivity.java        ← Launch screen
+    ├── property/PropertyListActivity.java← Search results list
+    ├── property/PropertyAdapter.java     ← RecyclerView adapter (shared)
+    ├── details/PropertyDetailsActivity.java ← One property in full
+    ├── favorites/FavoritesActivity.java  ← Saved properties
+    └── map/MapPlaceholderActivity.java   ← Location fallback screen</code></pre>
+
+<h4>Matching resources</h4>
+<table>
+  <tr><th>Type</th><th>Files</th></tr>
+  <tr><td>Layouts (<code>res/layout</code>)</td><td>activity_splash, activity_main, activity_property_list, activity_property_details, activity_favorites, activity_map_placeholder, <strong>item_property_card</strong> (the reusable list row)</td></tr>
+  <tr><td>Menus (<code>res/menu</code>)</td><td>menu_main (refresh), menu_property_list (sort), menu_details (share)</td></tr>
+  <tr><td>Values (<code>res/values</code>)</td><td>strings.xml, colors.xml, themes.xml + <code>values-night/colors.xml</code> (dark mode)</td></tr>
+</table>
+</div>
+
+<!-- ===================== 5 ===================== -->
+<div class="section">
+<h2>5. The Architecture: MVVM + Offline-First</h2>
+<p>The app follows the <strong>MVVM (Model–View–ViewModel)</strong> pattern recommended by Google. Data flows in one clear direction, and the UI simply reacts to changes.</p>
+
+<pre><code>   ┌─────────────┐   observes    ┌───────────────┐   asks    ┌────────────────┐
+   │  Activity   │ ────────────▶ │   ViewModel   │ ────────▶ │   Repository   │
+   │  (the VIEW) │ ◀──LiveData── │ (holds state) │ ◀──Live── │ (source truth) │
+   └─────────────┘               └───────────────┘           └───────┬────────┘
+        ▲  renders cards                                              │
+        │                                              ┌──────────────┴───────────────┐
+        │                                              ▼                               ▼
+        │                                      ┌───────────────┐             ┌──────────────────┐
+        └──────────────── UI updates ───────── │  Room (SQLite)│ ◀──refresh──│ Retrofit mock API│
+                          automatically         │ SINGLE SOURCE │             │   (network)      │
+                                                └───────────────┘             └──────────────────┘</code></pre>
+
+<h4>The rules that keep it stable</h4>
+<ul>
+  <li><strong>Room is the single source of truth.</strong> The UI <em>only</em> ever reads from the database. The network's job is just to <em>refresh</em> the database.</li>
+  <li><strong>Everything is reactive.</strong> Screens observe <code>LiveData</code>. When the database changes, observers fire and the UI redraws itself — no manual refreshing.</li>
+  <li><strong>No blocking the main thread.</strong> All database writes run on a background executor; reads return <code>LiveData</code> that Room populates off-thread. The UI never freezes.</li>
+  <li><strong>State survives rotation.</strong> Because filter/sort state lives in the <code>ViewModel</code>, rotating the phone doesn't lose the user's search.</li>
+</ul>
+</div>
+
+<!-- ===================== 6 ===================== -->
+<div class="section">
+<h2>6. The Data Layer (Room)</h2>
+<p>Room is a wrapper over SQLite. We describe tables as annotated Java classes (<em>entities</em>), describe queries as an interface (<em>DAO</em>), and Room generates the SQL code.</p>
+
+<h3>6.1 Entities (the tables)</h3>
+<h4><code>PropertyEntity</code> — the <code>properties</code> table</h4>
+<p>One row per listing. Key fields: <code>id</code> (primary key), <code>title</code>, <code>description</code>, <code>price</code>, <code>location</code>, <code>propertyType</code> (Apartment/House/Villa/Office), <code>listingType</code> (Sale/Rent), <code>bedrooms</code>, <code>bathrooms</code>, <code>area</code>, <code>latitude</code>, <code>longitude</code>, <code>image_url</code>, and the feature-specific fields <code>featured</code>, <code>sellerName</code>, <code>sellerPhone</code>, <code>sellerEmail</code>.</p>
+
+<h4><code>FavoriteEntity</code> — the <code>favorites</code> table</h4>
+<p>A deliberately tiny table: just <code>propertyId</code> as the primary key. A property is a favorite <em>if and only if</em> its id appears here. This keeps favorites decoupled from the listing data.</p>
+
+<h3>6.2 DAOs (the queries)</h3>
+<p><code>PropertyDao</code> exposes queries such as:</p>
+<ul>
+  <li><code>getAll()</code> / <code>getFeatured()</code> (<code>WHERE featured = 1</code>) / <code>getById()</code> — all returning <code>LiveData</code>.</li>
+  <li><code>search(...)</code> — filters by title/location text, listing type, and property type.</li>
+  <li>Five <strong>separate</strong> sort queries: <code>searchNewest</code> (<code>ORDER BY id DESC</code>), <code>searchPriceAsc/Desc</code>, <code>searchAreaAsc/Desc</code>.</li>
+  <li><code>getFavoriteProperties()</code> — an <code>INNER JOIN</code> between properties and favorites.</li>
+</ul>
+<div class="note"><strong>A deliberate design choice for correctness:</strong> we use five distinct <code>@Query</code> methods rather than a dynamic <code>ORDER BY :param</code>. SQLite cannot bind a column name as a parameter — doing so silently fails to sort. Separate compile-time-checked queries are safe and predictable.</div>
+<p><code>FavoriteDao</code> handles <code>insert</code> (ignore on conflict), <code>delete</code>, and reading favorite ids.</p>
+
+<h3>6.3 The database class, migrations &amp; seeding</h3>
+<p><code>EstateDatabase</code> is a singleton annotated <code>@Database(version = 3)</code> that ties the entities and DAOs together and owns a background write executor.</p>
+
+<h4>Migrations — upgrading the schema without losing data</h4>
+<p>Because a real installed app already holds a user's data, we never wipe the DB on a schema change; we <em>migrate</em> it:</p>
+<table>
+  <tr><th>Migration</th><th>What it does</th></tr>
+  <tr><td><code>MIGRATION_1_2</code></td><td>Adds the <code>image_url</code> column.</td></tr>
+  <tr><td><code>MIGRATION_2_3</code></td><td>Adds <code>featured</code> + the three seller columns, then backfills: marks featured ids, assigns seller triads, and fills image URLs by property type.</td></tr>
+</table>
+
+<h4>Seeding — the app is never empty</h4>
+<p>On first open, an <code>onOpen</code> callback checks <code>COUNT(*)</code>; if the table is empty it inserts the 15 sample listings from <code>SampleData</code> on the background executor.</p>
+<div class="note"><strong>Why <code>onOpen</code>, not <code>onCreate</code>?</strong> Seeding inside <code>onCreate</code> can re-enter the database while it is still opening and throw <em>&ldquo;IllegalStateException&rdquo;</em>. Doing it in <code>onOpen</code> after the DB is ready avoids that crash — a direct application of <em>stability first</em>.</div>
+</div>
+
+<!-- ===================== 7 ===================== -->
+<div class="section">
+<h2>7. The Network Layer (Retrofit + Mock API)</h2>
+<p>To demonstrate real client–server behaviour without a paid backend, the project ships a <strong>mock API</strong>: a static <code>properties.json</code> served over HTTP.</p>
+<ul>
+  <li><code>ApiService</code> declares the endpoint: <code>@GET("properties")</code> returning a list of <code>PropertyResponse</code>.</li>
+  <li><code>RemoteDataSource</code> builds Retrofit against <code>BASE_URL = "http://10.0.2.2:8080/"</code>. On the Android emulator, <code>10.0.2.2</code> is a special alias that loops back to <em>the host PC's</em> <code>localhost</code> — so the emulator can reach a server running on the developer's machine.</li>
+  <li><code>PropertyResponse</code> (a DTO) mirrors the JSON, using <code>@SerializedName</code> for fields like <code>propertyType</code> and <code>image_url</code>.</li>
+  <li><code>PropertyMapper</code> converts between the network DTO, the domain <code>Property</code>, and the Room entity — so the rest of the app never depends on the JSON shape.</li>
+</ul>
+<p>When the user taps <strong>Refresh</strong>, the repository fetches the list and writes it into Room; because the UI observes Room, the screen updates itself. If the network is down, the app simply keeps showing the cached data — offline-first.</p>
+</div>
+
+<!-- ===================== 8 ===================== -->
+<div class="section">
+<h2>8. The Repository &amp; ViewModel (The Reactive Brain)</h2>
+
+<h3><code>PropertyRepository</code></h3>
+<p>The single point that the rest of the app talks to for data. It:</p>
+<ul>
+  <li>Exposes <code>LiveData</code> streams: <code>getAllLive()</code>, <code>getFeaturedLive()</code>, <code>searchLive(query, listing, type, sort)</code>, <code>getFavoritePropertiesLive()</code>.</li>
+  <li>Defines the <code>SortOrder</code> enum: <code>NEWEST, PRICE_ASC, PRICE_DESC, AREA_ASC, AREA_DESC</code>, and picks the matching DAO query.</li>
+  <li>Runs writes (favorite toggles, network refresh) on a background executor.</li>
+  <li>Maintains a live set of favorite ids so any list can instantly show the correct heart state.</li>
+</ul>
+
+<h3><code>PropertyViewModel</code></h3>
+<p>An <code>AndroidViewModel</code> that holds the current filter state — query text, listing type, property type, and sort order — and exposes the results as a single <code>MediatorLiveData</code> called <code>searchResults</code>.</p>
+<p>When any filter changes, <code>rebuildSearch()</code> swaps the underlying source (removing the old source before adding the new one, so sources never stack up) and points <code>searchResults</code> at the freshly chosen repository query. The Activity just observes <code>searchResults</code> and never worries about <em>how</em> the list was produced.</p>
+</div>
+
+<!-- ===================== 9 ===================== -->
+<div class="section">
+<h2>9. Every Screen: Activities &amp; Their Layouts</h2>
+<p>Six activities, each with its own XML layout. Here is what each one contains and does.</p>
+
+<h3>9.1 SplashActivity &nbsp;&rarr;&nbsp; <code>activity_splash.xml</code></h3>
+<p><strong>Layout:</strong> a centred logo circle (location icon) over a branded background, with the app name and tagline, animated by a fade-in.</p>
+<p><strong>Logic:</strong> shows for ~1.4 seconds, then launches <code>MainActivity</code> and finishes. This is the app's <strong>launcher</strong> activity (the entry point declared in the manifest).</p>
+
+<h3>9.2 MainActivity (Home) &nbsp;&rarr;&nbsp; <code>activity_main.xml</code></h3>
+<p><strong>Layout</strong> (a scrollable column):</p>
+<ul>
+  <li>Header: app title + a <strong>favorites</strong> icon button (top-right).</li>
+  <li>A search field (<code>TextInputLayout</code> + <code>etSearch</code>).</li>
+  <li>A <strong>Buy / Rent</strong> toggle group (All / Buy / Rent).</li>
+  <li>A <strong>property-type chip group</strong> (All / Apartment / House / Villa / Office).</li>
+  <li>A <strong>Find Properties</strong> button.</li>
+  <li>A &ldquo;Featured Properties&rdquo; heading + a <code>RecyclerView</code> (<code>rvFeatured</code>).</li>
+  <li>A <strong>View All Properties</strong> button.</li>
+</ul>
+<p><strong>Logic:</strong> observes the <em>featured</em> LiveData and renders those cards; reads the chosen search text/listing/type and opens <code>PropertyListActivity</code> with them as intent extras. The menu adds a <strong>Refresh</strong> action.</p>
+
+<h3>9.3 PropertyListActivity &nbsp;&rarr;&nbsp; <code>activity_property_list.xml</code></h3>
+<p><strong>Layout:</strong> a Material toolbar (with a result-count subtitle), the same search field + Buy/Rent toggle + type chips (chips inside a horizontal scroll view), a full-height <code>RecyclerView</code> (<code>rvProperties</code>), and an <strong>empty-state</strong> panel shown when nothing matches.</p>
+<p><strong>Logic:</strong> reads the incoming query/listing/type extras, restores them into the UI controls, and observes the view-model's <code>searchResults</code>. The <strong>Sort</strong> menu (a single-choice submenu) maps each option to a <code>SortOrder</code> and re-queries. Tapping a card opens the details screen.</p>
+
+<h3>9.4 PropertyDetailsActivity &nbsp;&rarr;&nbsp; <code>activity_property_details.xml</code></h3>
+<p><strong>Layout:</strong> a large property image (with listing badge + featured star), the price, title, location, three <strong>spec cards</strong> (bedrooms / bathrooms / area), a type &amp; listing line, the description, a <strong>Contact Seller</strong> section (name + Call / Email / Message buttons), and bottom actions (<strong>Favorite</strong> toggle + <strong>View on Map</strong>). The toolbar carries the <strong>Share</strong> action.</p>
+<p><strong>Logic:</strong> loads the property by id, binds every field, toggles the favorite heart, launches the share sheet, fires the seller-contact intents, and opens the map. If a listing has no seller data, the whole seller section is hidden.</p>
+
+<h3>9.5 FavoritesActivity &nbsp;&rarr;&nbsp; <code>activity_favorites.xml</code></h3>
+<p><strong>Layout:</strong> toolbar + a <code>RecyclerView</code> of saved properties + an empty-state (&ldquo;No favorites yet&rdquo;).</p>
+<p><strong>Logic:</strong> observes the favorites join query; the list updates live as the user hearts/un-hearts properties anywhere in the app.</p>
+
+<h3>9.6 MapPlaceholderActivity &nbsp;&rarr;&nbsp; <code>activity_map_placeholder.xml</code></h3>
+<p><strong>Layout:</strong> a location icon, the property name &amp; location, and its formatted coordinates (<code>&deg; N, &deg; E</code>).</p>
+<p><strong>Logic:</strong> this is the <em>fallback</em> for &ldquo;View on Map&rdquo;. The details screen first tries to open a real maps app via a <code>geo:</code> intent; only if no maps app exists does it fall back to this coordinate-preview screen. (No Google Maps SDK is bundled — a stability/scope decision.)</p>
+
+<h3>9.7 The shared row: <code>item_property_card</code> + <code>PropertyAdapter</code></h3>
+<p>All three lists (Home featured, Search results, Favorites) reuse a single <code>MaterialCardView</code> row and a single <code>PropertyAdapter</code>. Each card shows the image (via Glide with a fallback), a SALE/RENT badge, a favorite heart, an optional featured star, the title, location, price, and specs (e.g. &ldquo;3 BHK &middot; Apartment&rdquo;). One adapter, one row layout, three screens — no duplication.</p>
+</div>
+
+<!-- ===================== 10 ===================== -->
+<div class="section">
+<h2>10. The Four Features, End to End</h2>
+
+<h3><span class="tag">F1</span> Featured Properties</h3>
+<p><strong>Data:</strong> a <code>featured</code> boolean column (set for a curated set of ids during migration/seed). <strong>Query:</strong> <code>getFeatured()</code> = <code>WHERE featured = 1</code>. <strong>UI:</strong> the home screen observes this list and shows an amber <strong>star</strong> on featured cards. The star reflects the real flag and is independent of Sale/Rent.</p>
+
+<h3><span class="tag">F2</span> Sort Listings</h3>
+<p><strong>UI:</strong> the list toolbar's Sort submenu offers Newest / Price &uarr; / Price &darr; / Area &uarr; / Area &darr;. <strong>Flow:</strong> the selected item maps to a <code>SortOrder</code> &rarr; the view-model rebuilds <code>searchResults</code> &rarr; the repository runs the matching compile-time-checked DAO query &rarr; the list re-renders reactively. Sorting composes with the active search text and filters.</p>
+
+<h3><span class="tag">F3</span> Share Property</h3>
+<p><strong>UI:</strong> a Share action on the details toolbar. <strong>Flow:</strong> builds a plain-text summary (title, price, location, specs, type, seller) plus a &ldquo;Shared via EstateFinder&rdquo; footer, wraps it in an <code>ACTION_SEND</code> intent, and presents the system share sheet via <code>createChooser</code> — so the user can send it to WhatsApp, email, notes, etc.</p>
+
+<h3><span class="tag">F4</span> Seller Info &amp; Contact</h3>
+<p><strong>Data:</strong> each listing carries <code>sellerName</code>, <code>sellerPhone</code>, <code>sellerEmail</code>. <strong>UI:</strong> a Contact Seller section with Call / Email / Message. <strong>Flow:</strong></p>
+<ul>
+  <li><strong>Call</strong> &rarr; <code>ACTION_DIAL</code> with a <code>tel:</code> URI (sanitised digits). We use <em>DIAL</em>, not <em>CALL</em>, so it opens the dialer with the number pre-filled and never places a call without the user tapping — no call permission required.</li>
+  <li><strong>Email</strong> &rarr; <code>mailto:</code> with a pre-filled subject.</li>
+  <li><strong>Message</strong> &rarr; <code>smsto:</code> to the SMS app.</li>
+</ul>
+<p>Each is wrapped in a try/catch so that if no matching app exists, the user sees a friendly message instead of a crash.</p>
+</div>
+
+<!-- ===================== 11 ===================== -->
+<div class="section">
+<h2>11. Visual Polish (Theme, Day/Night, Animations)</h2>
+<ul>
+  <li><strong>Material 3 theme</strong> (<code>Theme.Material3.DayNight.NoActionBar</code>) with a green brand palette (primary <code>#2E7D32</code>) and an amber accent for featured stars.</li>
+  <li><strong>Automatic dark mode:</strong> a full <code>values-night/colors.xml</code> palette. Text colours that were dark-green in light mode become light-green in dark mode so they stay legible; the brand green and amber star stay constant. No layout changes are needed — same colour <em>names</em>, different values.</li>
+  <li><strong>Splash screen</strong> with a fade-in animation for a polished launch.</li>
+  <li><strong>List entrance animation:</strong> cards &ldquo;fall in&rdquo; via a layout animation when a list appears.</li>
+  <li><strong>Indian-currency formatting</strong> (<code>FormatUtils</code>): prices render as <code>&#8377;32,50,000</code> and rents as <code>&#8377;62,000/month</code> using the Indian digit-grouping style.</li>
+</ul>
+</div>
+
+<!-- ===================== 12 ===================== -->
+<div class="section">
+<h2>12. How It All Works Together (Runtime Walkthrough)</h2>
+<p>Here is the complete life of a session — the &ldquo;this is how it works&rdquo; story:</p>
+<ol>
+  <li><strong>Launch.</strong> Android starts <code>SplashActivity</code> (the launcher). It shows the logo for ~1.4s.</li>
+  <li><strong>Database opens.</strong> The Room singleton opens; its <code>onOpen</code> callback sees the table is empty on first run and seeds the 15 sample listings on a background thread. On later runs, existing data (and any schema upgrade via migrations) is preserved.</li>
+  <li><strong>Home appears.</strong> <code>MainActivity</code> asks the view-model for the featured list. The view-model asks the repository, which returns <code>LiveData</code> from Room. When Room delivers the rows, the observer fires and the featured cards render — with images loaded by Glide.</li>
+  <li><strong>User searches.</strong> They type text, pick Buy/Rent, pick a type, and tap <strong>Find</strong>. <code>MainActivity</code> opens <code>PropertyListActivity</code>, passing those choices.</li>
+  <li><strong>Results stream in.</strong> The list screen restores those controls and observes <code>searchResults</code>. The repository runs the matching DAO query; the list renders, or the empty-state shows. The toolbar subtitle shows the result count.</li>
+  <li><strong>User sorts.</strong> Choosing a Sort option rebuilds the query; the same observer re-fires with re-ordered rows. Nothing else in the screen needs to change.</li>
+  <li><strong>User opens a property.</strong> Tapping a card opens <code>PropertyDetailsActivity</code>, which loads that property by id and binds the image, price, specs, description, and seller section.</li>
+  <li><strong>User acts.</strong> They can <strong>favorite</strong> it (written to the favorites table on a background thread — the heart updates everywhere via LiveData), <strong>share</strong> it (system share sheet), <strong>contact the seller</strong> (dialer/email/SMS), or <strong>view on map</strong> (external maps app, or the coordinate fallback screen).</li>
+  <li><strong>Favorites.</strong> The favorites icon on Home opens <code>FavoritesActivity</code>, which lists exactly the properties whose ids are in the favorites table, live.</li>
+  <li><strong>Refresh (optional).</strong> The Refresh action pulls fresh data from the mock API into Room; because the UI observes Room, it updates itself. With no network, cached data simply remains — the app never breaks.</li>
+</ol>
+<p>Every arrow in that story is the same pattern: <strong>UI observes &rarr; ViewModel holds state &rarr; Repository reads Room &rarr; Room notifies &rarr; UI redraws.</strong> That single, repeated, one-directional loop is what makes the whole app predictable and stable.</p>
+</div>
+
+<!-- ===================== 13 ===================== -->
+<div class="section">
+<h2>13. How to Build &amp; Run It</h2>
+<h4>Just the app (offline — recommended for the demo)</h4>
+<ol>
+  <li>Open the project in Android Studio and let Gradle sync.</li>
+  <li>Pick an emulator (API 26+) or a real device.</li>
+  <li>Press <strong>Run &#9654;</strong>. The app seeds itself and works fully offline.</li>
+</ol>
+<h4>To also demonstrate the network refresh</h4>
+<ol>
+  <li>Serve the mock API from the <code>api-mock/</code> folder on the host on port 8080, e.g.:
+  <pre><code>cd api-mock
+python -m http.server 8080</code></pre></li>
+  <li>Run the app on the <strong>emulator</strong> (so <code>10.0.2.2</code> reaches the host) and tap <strong>Refresh</strong>.</li>
+</ol>
+</div>
+
+<!-- ===================== 14 ===================== -->
+<div class="section">
+<h2>14. Viva Talking Points &amp; Conclusion</h2>
+<h4>Strong points to raise in the viva</h4>
+<ul>
+  <li><strong>Clean MVVM</strong> with a single source of truth and one-directional, reactive data flow.</li>
+  <li><strong>Offline-first</strong> — the UI always reads from Room; the network only refreshes it.</li>
+  <li><strong>Thread-safe</strong> — no database work on the main thread; the UI never freezes (no ANRs).</li>
+  <li><strong>Robust database</strong> — versioned schema with real migrations, and crash-safe <code>onOpen</code> seeding.</li>
+  <li><strong>Correct-by-construction sorting</strong> — separate compile-checked queries instead of an unsafe dynamic <code>ORDER BY</code>.</li>
+  <li><strong>Safe external actions</strong> — <code>ACTION_DIAL</code> (never auto-calls), and every intent guarded so missing apps don't crash the app.</li>
+  <li><strong>Polished UX</strong> — Material 3, automatic dark mode, animations, Indian-currency formatting, empty states.</li>
+</ul>
+
+<h4>Conclusion</h4>
+<p>EstateFinder is a complete, stable, native Android application that takes a user from a branded splash, through searching, filtering, and sorting a catalogue of property listings, into a rich detail page where they can shortlist, share, and contact a seller — all backed by a local database that keeps the app fast and fully functional offline, with an optional network refresh to prove the client–server path.</p>
+<p>It was built by starting from a single generated Activity in Android Studio and growing it — one Activity, one layout, one data class at a time — into a six-screen app organised by the MVVM pattern. The result is deliberately focused: a small, coherent feature set implemented carefully, with <strong>stability chosen over feature count</strong> at every decision. <strong>That is how EstateFinder works.</strong></p>
+</div>
+
+<div class="footer-note">EstateFinder — End-to-End Project Report &bull; Generated for project documentation &amp; viva preparation.</div>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="400dp" android:height="300dp"
+    android:viewportWidth="400" android:viewportHeight="300">
+    <path android:pathData="M0,0h400v300h-400z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:angle="270"
+                android:startColor="#E3EAF6" android:endColor="#FAFBFE" />
+        </aapt:attr>
+    </path>
+    <path android:fillColor="#FFB74D" android:pathData="M64,52m-20,0a20,20 0,1 1,40 0a20,20 0,1 1,-40 0" />
+    <path android:fillColor="#C5CAE9" android:pathData="M0,240h400v60h-400z" />
+    <!-- twin towers -->
+    <path android:fillColor="#5C6BC0" android:pathData="M110,50h80v190h-80z" />
+    <path android:fillColor="#7986CB" android:pathData="M212,90h80v150h-80z" />
+    <path android:fillColor="#283593" android:pathData="M104,38h92v14h-92z" />
+    <path android:fillColor="#283593" android:pathData="M206,78h92v14h-92z" />
+    <!-- windows tower 1 -->
+    <path android:fillColor="#E8EAF6" android:pathData="M120,66h60v10h-60z M120,86h60v10h-60z M120,106h60v10h-60z M120,126h60v10h-60z M120,146h60v10h-60z M120,166h60v10h-60z M120,186h60v10h-60z" />
+    <!-- windows tower 2 -->
+    <path android:fillColor="#E8EAF6" android:pathData="M222,106h60v10h-60z M222,126h60v10h-60z M222,146h60v10h-60z M222,166h60v10h-60z M222,186h60v10h-60z" />
+    <!-- door -->
+    <path android:fillColor="#1A237E" android:pathData="M136,208h28v32h-28z" />
+    <path android:fillColor="#1A237E" android:pathData="M238,208h24v32h-24z" />
+</vector>

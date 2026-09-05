@@ -1,0 +1,24 @@
+# Gradle
+.gradle/
+build/
+app/build/
+
+# IDE
+.idea/
+*.iml
+local.properties
+.DS_Store
+
+# Android Studio captures
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Never commit secrets — the Google Maps key lives in local.properties
+
+# Local test / debug artifacts (device pulls, DB copies, crash dumps) — never commit
+*.db
+dump_*.xml
+ui_*.xml
+window_dump.xml
+hs_err_pid*.log

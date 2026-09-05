@@ -1,0 +1,27 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="400dp" android:height="300dp"
+    android:viewportWidth="400" android:viewportHeight="300">
+    <path android:pathData="M0,0h400v300h-400z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:angle="270"
+                android:startColor="#FFF8E1" android:endColor="#FFFDF5" />
+        </aapt:attr>
+    </path>
+    <path android:fillColor="#FFB300" android:pathData="M56,50m-18,0a18,18 0,1 1,36 0a18,18 0,1 1,-36 0" />
+    <path android:fillColor="#DCEDC8" android:pathData="M0,244h400v56h-400z" />
+    <!-- L-shaped villa -->
+    <path android:fillColor="#FFF3CD" android:pathData="M90,140h180v114h-180z" />
+    <path android:fillColor="#FFF3CD" android:pathData="M270,180h60v74h-60z" />
+    <!-- roof -->
+    <path android:fillColor="#EF6C00" android:pathData="M78,126h204v18h-204z M262,166h80v16h-80z" />
+    <!-- windows -->
+    <path android:fillColor="#90CAF9" android:pathData="M108,162h32v28h-32z M162,162h32v28h-32z M108,208h32v28h-32z M162,208h32v28h-32z" />
+    <!-- doors -->
+    <path android:fillColor="#E65100" android:pathData="M216,196h32v58h-32z M288,204h26v50h-26z" />
+    <!-- driveway -->
+    <path android:fillColor="#CFD8DC" android:pathData="M288,254h26v46h-26z" />
+    <!-- garden -->
+    <path android:fillColor="#2E7D32" android:pathData="M60,240m-16,0a16,16 0,1 1,32 0a16,16 0,1 1,-32 0" />
+    <path android:fillColor="#5D4037" android:pathData="M56,244h8v34h-8z" />
+</vector>

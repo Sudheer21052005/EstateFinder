@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Sort listings. Rendered via toolbar.inflateMenu() (NoActionBar theme -> onCreateOptionsMenu
+         does not render). Single-choice submenu; "Newest" (id DESC = insertion order) is the default.
+         The old dead action_refresh item was removed to keep the network path dormant. -->
+    <item
+        android:id="@+id/action_sort"
+        android:icon="@drawable/ic_sort"
+        android:title="@string/action_sort"
+        app:showAsAction="ifRoom">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/sort_newest"
+                    android:checked="true"
+                    android:title="@string/sort_newest" />
+                <item
+                    android:id="@+id/sort_price_low"
+                    android:title="@string/sort_price_low" />
+                <item
+                    android:id="@+id/sort_price_high"
+                    android:title="@string/sort_price_high" />
+                <item
+                    android:id="@+id/sort_area_low"
+                    android:title="@string/sort_area_low" />
+                <item
+                    android:id="@+id/sort_area_high"
+                    android:title="@string/sort_area_high" />
+            </group>
+        </menu>
+    </item>
+</menu>

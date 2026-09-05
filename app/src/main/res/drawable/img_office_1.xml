@@ -1,0 +1,27 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="400dp" android:height="300dp"
+    android:viewportWidth="400" android:viewportHeight="300">
+    <path android:pathData="M0,0h400v300h-400z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:angle="270"
+                android:startColor="#ECEFF1" android:endColor="#FAFCFD" />
+        </aapt:attr>
+    </path>
+    <path android:fillColor="#B0BEC5" android:pathData="M0,244h400v56h-400z" />
+    <!-- antenna -->
+    <path android:fillColor="#37474F" android:pathData="M197,18h6v28h-6z" />
+    <!-- main tower -->
+    <path android:fillColor="#78909C" android:pathData="M140,46h120v208h-120z" />
+    <path android:fillColor="#546E7A" android:pathData="M132,34h136v14h-136z" />
+    <!-- glass grid -->
+    <path android:fillColor="#CFD8DC" android:pathData="M152,58h20v26h-20z M180,58h20v26h-20z M208,58h20v26h-20z M236,58h16v26h-16z" />
+    <path android:fillColor="#CFD8DC" android:pathData="M152,92h20v26h-20z M180,92h20v26h-20z M208,92h20v26h-20z M236,92h16v26h-16z" />
+    <path android:fillColor="#CFD8DC" android:pathData="M152,126h20v26h-20z M180,126h20v26h-20z M208,126h20v26h-20z M236,126h16v26h-16z" />
+    <path android:fillColor="#CFD8DC" android:pathData="M152,160h20v26h-20z M180,160h20v26h-20z M208,160h20v26h-20z M236,160h16v26h-16z" />
+    <!-- podium -->
+    <path android:fillColor="#455A64" android:pathData="M110,208h180v46h-180z" />
+    <path android:fillColor="#90A4AE" android:pathData="M124,220h152v20h-152z" />
+    <!-- entrance -->
+    <path android:fillColor="#263238" android:pathData="M186,224h28v30h-28z" />
+</vector>

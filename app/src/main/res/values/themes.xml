@@ -1,0 +1,15 @@
+<resources>
+    <!-- Base application theme (Material 3, day/night aware) -->
+    <style name="Theme.EstateFinder" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorPrimaryContainer">@color/primary_container</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="android:windowBackground">@color/background</item>
+    </style>
+
+    <!-- Placeholder splash theme; replaced by the real splash screen in Phase 2 -->
+    <style name="Theme.EstateFinder.Splash">
+        <item name="android:windowBackground">@color/primary</item>
+    </style>
+</resources>

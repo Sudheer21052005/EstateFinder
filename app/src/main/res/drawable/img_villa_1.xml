@@ -1,0 +1,29 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="400dp" android:height="300dp"
+    android:viewportWidth="400" android:viewportHeight="300">
+    <path android:pathData="M0,0h400v300h-400z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:angle="270"
+                android:startColor="#E1F5FE" android:endColor="#F9FDFF" />
+        </aapt:attr>
+    </path>
+    <path android:fillColor="#FFF176" android:pathData="M340,48m-18,0a18,18 0,1 1,36 0a18,18 0,1 1,-36 0" />
+    <path android:fillColor="#C8E6C9" android:pathData="M0,240h400v60h-400z" />
+    <!-- villa body -->
+    <path android:fillColor="#E0F2F1" android:pathData="M80,150h240v100h-240z" />
+    <!-- flat roof -->
+    <path android:fillColor="#00796B" android:pathData="M68,136h264v18h-264z" />
+    <!-- windows -->
+    <path android:fillColor="#81D4FA" android:pathData="M100,170h36v32h-36z M160,170h36v32h-36z M280,170h36v32h-36z" />
+    <!-- central door -->
+    <path android:fillColor="#00695C" android:pathData="M222,164h36v86h-36z" />
+    <!-- columns -->
+    <path android:fillColor="#B2DFDB" android:pathData="M142,160h8v90h-8z M268,160h8v90h-8z" />
+    <!-- pool -->
+    <path android:fillColor="#4FC3F7" android:pathData="M120,254h160v28h-160z" />
+    <path android:fillColor="#B3E5FC" android:pathData="M132,262h40v5h-40z M186,268h44v5h-44z M244,262h24v5h-24z" />
+    <!-- tree -->
+    <path android:fillColor="#6D4C41" android:pathData="M50,204h10v50h-10z" />
+    <path android:fillColor="#2E7D32" android:pathData="M55,178m-26,0a26,26 0,1 1,52 0a26,26 0,1 1,-52 0" />
+</vector>

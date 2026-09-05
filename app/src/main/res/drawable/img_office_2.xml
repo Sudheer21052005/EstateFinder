@@ -1,0 +1,24 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="400dp" android:height="300dp"
+    android:viewportWidth="400" android:viewportHeight="300">
+    <path android:pathData="M0,0h400v300h-400z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:angle="270"
+                android:startColor="#EDE7F6" android:endColor="#FBF9FE" />
+        </aapt:attr>
+    </path>
+    <path android:fillColor="#B39DDB" android:pathData="M0,244h400v56h-400z" />
+    <!-- twin office blocks -->
+    <path android:fillColor="#455A64" android:pathData="M120,70h76v184h-76z" />
+    <path android:fillColor="#546E7A" android:pathData="M212,100h76v154h-76z" />
+    <path android:fillColor="#263238" android:pathData="M112,58h92v14h-92z" />
+    <path android:fillColor="#263238" android:pathData="M204,88h92v14h-92z" />
+    <!-- lit windows -->
+    <path android:fillColor="#FFD54F" android:pathData="M132,84h18v14h-18z M158,84h18v14h-18z M132,112h18v14h-18z M158,112h18v14h-18z M132,140h18v14h-18z M158,140h18v14h-18z M132,168h18v14h-18z M158,168h18v14h-18z" />
+    <path android:fillColor="#FFD54F" android:pathData="M224,116h18v14h-18z M250,116h18v14h-18z M224,144h18v14h-18z M250,144h18v14h-18z M224,172h18v14h-18z M250,172h18v14h-18z" />
+    <!-- lobby -->
+    <path android:fillColor="#37474F" android:pathData="M100,214h200v40h-200z" />
+    <path android:fillColor="#B0BEC5" android:pathData="M112,224h176v20h-176z" />
+    <path android:fillColor="#181D21" android:pathData="M186,226h30v28h-30z" />
+</vector>

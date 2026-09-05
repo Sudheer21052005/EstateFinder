@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="400dp" android:height="300dp"
+    android:viewportWidth="400" android:viewportHeight="300">
+    <path android:pathData="M0,0h400v300h-400z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:angle="270"
+                android:startColor="#E0F2F1" android:endColor="#F7FDFB" />
+        </aapt:attr>
+    </path>
+    <path android:fillColor="#FFCC80" android:pathData="M60,54m-18,0a18,18 0,1 1,36 0a18,18 0,1 1,-36 0" />
+    <path android:fillColor="#B2DFDB" android:pathData="M0,240h400v60h-400z" />
+    <!-- two-storey body -->
+    <path android:fillColor="#B2DFDB" android:pathData="M104,96h192v154h-192z" />
+    <!-- roof band -->
+    <path android:fillColor="#00695C" android:pathData="M94,84h212v18h-212z" />
+    <!-- upper windows -->
+    <path android:fillColor="#FFF59D" android:pathData="M124,116h30v34h-30z M185,116h30v34h-30z M246,116h30v34h-30z" />
+    <!-- lower windows -->
+    <path android:fillColor="#FFF59D" android:pathData="M124,176h30v30h-30z M246,176h30v30h-30z" />
+    <!-- door -->
+    <path android:fillColor="#004D40" android:pathData="M186,180h32v70h-32z" />
+    <!-- path + hedge -->
+    <path android:fillColor="#80CBC4" android:pathData="M186,250h32v50h-32z" />
+    <path android:fillColor="#26A69A" android:pathData="M104,244m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0 M312,244m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
+</vector>

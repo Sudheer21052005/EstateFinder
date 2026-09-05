@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Dark-theme palette. Loaded automatically instead of values/colors.xml when the
+      device is in dark mode (Theme.Material3.DayNight). Same color NAMES as the light
+      palette so no layout changes are needed.
+
+      Rules used to derive these:
+        * Brand green (primary) and the amber featured star stay identical in both modes.
+        * Colors used as TEXT that were dark-green in light mode (primary_dark, price_green)
+          become LIGHT green here, or they'd be illegible on dark surfaces.
+        * chip_bg flips from a light-green to a dark-green tint; the spec-card numbers on top
+          of it use the now-light primary_dark, so the pair stays high-contrast.
+    -->
+
+    <!-- Unchanged: these only ever sit on the always-green toolbar / splash / buttons -->
+    <color name="primary">#2E7D32</color>
+    <color name="primary_container">#B7E4B9</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="accent_amber">#FFB300</color>
+    <color name="ic_launcher_background">#2E7D32</color>
+
+    <!-- Was #1B5E20 (dark green). Used as TEXT for spec-card numbers, the header title and
+         the map subtitle -> must be light so it reads on chip_bg and on the dark background. -->
+    <color name="primary_dark">#81C784</color>
+
+    <!-- Dark surfaces -->
+    <color name="background">#121212</color>
+    <color name="surface">#1E1E1E</color>
+    <color name="on_surface">#ECECEC</color>
+
+    <!-- Cards / chips / states, re-tinted for dark -->
+    <color name="chip_bg">#2A3A2E</color>
+    <color name="price_green">#81C784</color>
+    <color name="text_secondary">#B0B0B0</color>
+    <color name="rent_blue">#64B5F6</color>
+    <color name="divider">#333333</color>
+    <!-- Neutral fill behind property images before Glide loads (dark theme) -->
+    <color name="image_placeholder">#2A2A2A</color>
+</resources>

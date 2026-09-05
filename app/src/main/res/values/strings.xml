@@ -1,0 +1,76 @@
+<resources>
+    <!-- App -->
+    <string name="app_name">EstateFinder</string>
+    <string name="tagline">Find Your Perfect Property</string>
+    <string name="home_subtitle">Find your next home</string>
+
+    <!-- Home -->
+    <string name="search_hint">Search by name or location…</string>
+    <string name="find_properties">Find Properties</string>
+    <string name="featured">Featured Properties</string>
+    <string name="favorites_title">Favorites</string>
+    <string name="see_all">View All Properties</string>
+
+    <!-- List -->
+    <string name="list_title">Properties</string>
+    <string name="filter_all">All</string>
+    <string name="filter_buy">Buy</string>
+    <string name="filter_rent">Rent</string>
+    <string name="type_apartment">Apartment</string>
+    <string name="type_house">House</string>
+    <string name="type_villa">Villa</string>
+    <string name="type_office">Office</string>
+
+    <!-- Reusable -->
+    <string name="bd">%d BHK</string>
+    <string name="bath">%d Bath</string>
+    <string name="area_sqft">%d sq.ft.</string>
+    <string name="no_results">No properties found\nTry changing your search or filters</string>
+    <string name="no_favorites">No favorites yet\nTap the ♥ on any property to save it here</string>
+    <string name="view_on_map">View on Map</string>
+    <string name="description_label">Description</string>
+    <string name="details_title">Property Details</string>
+    <string name="filter_bedrooms">Bedrooms</string>
+    <string name="filter_bathrooms">Bathrooms</string>
+    <string name="area_label">Area</string>
+    <string name="add_to_favorites">Add Favorite</string>
+    <string name="remove_from_favorites">Remove Favorite</string>
+    <string name="type_listing_format">Type: %1$s   ·   Listing: %2$s</string>
+    <string name="result_count">%1$d properties</string>
+
+    <!-- Map placeholder -->
+    <string name="map_placeholder_title">Location Preview</string>
+    <string name="map_placeholder_note">No maps app found — showing the property coordinates instead.</string>
+    <string name="coordinates_label">Coordinates</string>
+    <string name="refresh">Refresh</string>
+    <string name="map_title">Property Location</string>
+    <string name="my_location">My Location</string>
+    <string name="no_property_data">Property data not available</string>
+    <string name="location_permission_denied">Location permission denied</string>
+
+    <!-- Featured (final phase) -->
+    <string name="cd_featured">Featured property</string>
+
+    <!-- Sort (final phase) -->
+    <string name="action_sort">Sort</string>
+    <string name="sort_newest">Newest</string>
+    <string name="sort_price_low">Price: Low to High</string>
+    <string name="sort_price_high">Price: High to Low</string>
+    <string name="sort_area_low">Area: Low to High</string>
+    <string name="sort_area_high">Area: High to Low</string>
+
+    <!-- Share (final phase) -->
+    <string name="action_share">Share</string>
+    <string name="share_chooser_title">Share property</string>
+    <string name="share_footer">Shared via EstateFinder</string>
+    <string name="no_share_app">No sharing app available</string>
+
+    <!-- Seller / contact (final phase) -->
+    <string name="contact_seller">Contact Seller</string>
+    <string name="action_call">Call</string>
+    <string name="action_email">Email</string>
+    <string name="action_message">Message</string>
+    <string name="no_dialer_app">No dialer app available</string>
+    <string name="no_email_app">No email app available</string>
+    <string name="no_sms_app">No messaging app available</string>
+</resources>

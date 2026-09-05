@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Applied to RecyclerViews: plays item_fall_in with a stagger between cards -->
+<layoutAnimation xmlns:android="http://schemas.android.com/apk/res/android"
+    android:animation="@anim/item_fall_in"
+    android:delay="12%"
+    android:animationOrder="normal" />
